@@ -8,3 +8,6 @@ function getHumanChoice() {
     let human = prompt('Choose rock, paper, scissors');
     return human;
 }
+
+let humanScore = 0;
+let computerScore = 0;
