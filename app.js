@@ -3,3 +3,8 @@ function getComputerChoice() {
     let random = Math.floor(Math.random() * hands.length);
     return hands[random];
 }
+
+function getHumanChoice() {
+    let human = prompt('Choose rock, paper, scissors');
+    return human;
+}
