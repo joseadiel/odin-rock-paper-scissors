@@ -1,48 +1,48 @@
-function getComputerChoice() {
-    let hands = ['rock', 'paper', 'scissors'];
-    let random = Math.floor(Math.random() * hands.length);
-    return hands[random];
-}
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const sciccors = document.getElementById('sciccors');
 
-function getHumanChoice() {
-    let human = prompt('Choose Rock, Paper, Scissors');
-    return human;
-}
+const humanResult = document.getElementById('human-result');
+const computerResult = document.getElementById('computer-result');
+const humanPoints = document.getElementById('human-points');
+const computerPoints = document.getElementById('computer-points');
 
 let humanScore = 0;
 let computerScore = 0;
 
-function playGame() {
-    function playRound(humanChoice, computerChoice) {
-        humanChoice = humanChoice.toLowerCase();
+function getComputerChoice() {
+    let hands = ['Rock', 'Paper', 'Scissors'];
+    let random = Math.floor(Math.random() * hands.length);
+    return hands[random];
+}
 
-        if (humanChoice === computerChoice) return alert('Draw');
-        else if (
-            (humanChoice === 'rock' && computerChoice === 'scissors') ||
-            (humanChoice === 'paper' && computerChoice === 'rock') ||
-            (humanChoice === 'scissors' && computerChoice === 'paper')
-        ) return alert(`You won! \nHuman: ${++humanScore}`);
-        else return alert(`You lost! \nComputer: ${++computerScore}`);
+function getWinner (human, computer) {
+    if (human === computer) return 'draw';
+    else if (
+        (human === 'Rock' && computer === 'Scissors') ||
+        (human === 'Paper' && computer === 'Rock') ||
+        (human == 'Scissors' && computer === 'Paper')
+    ) return 'humnan';
+    else return 'computer';
+};
+
+function playRound(humanChoice) {
+    const computerChoice = getComputerChoice();
+    const winner = getWinner(humanChoice, computerChoice);
+
+    humanResult.textContent = humanChoice;
+    computerResult.textContent = computerChoice;
+
+    if (winner === 'humnan') {
+        humanScore++;
+    } else if (winner === 'computer') {
+        computerScore++;
     }
 
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-
-    playRound(humanSelection, computerSelection);
+    humanPoints.textContent = `Human: ${humanScore}`;
+    computerPoints.textContent = `Computer: ${computerScore}`;
 }
 
-for (let i = 0; i < 5; i++) {
-    // playGame();
-}
-
-function getWinner() {
-    if (humanScore > computerScore) {
-        alert(`Winner: Human`);
-    } else if (computerScore > humanScore) {
-        alert(`Winner: Computer`);
-    } else {
-        alert(`Draw`);
-    }
-}
-
-// getWinner();
+rock.addEventListener('click', () => playRound('Rock'));
+paper.addEventListener('click', () => playRound('Paper'));
+sciccors.addEventListener('click', () => playRound('Sciccors'));
