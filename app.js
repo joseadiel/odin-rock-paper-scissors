@@ -32,7 +32,7 @@ function playGame() {
 }
 
 for (let i = 0; i < 5; i++) {
-    playGame();
+    // playGame();
 }
 
 function getWinner() {
@@ -45,4 +45,4 @@ function getWinner() {
     }
 }
 
-getWinner();
+// getWinner();
